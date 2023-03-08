@@ -24,5 +24,8 @@ app.use("/api/v1",routes);
 //for login use below string in postman
 //post : localhost:5000/api/v1/user/
 
+//to get data using private_data
+//get:localhost:5000/api/v1/user/private_data?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDA4NTc1MDQ3NjZjOTNiMDY2MGZmZjciLCJlbWFpbCI6Im1hbm9qNTZAZ21haWwuY29tIiwiaWF0IjoxNjc4MjY4OTY5LCJleHAiOjE3MDk4MDQ5Njl9.kCQPsTZuZ9148qzkzCNq6NF2j8j9Q6Hsk2MTMpXM3Yk
+
 //expose this module to main index.js in src file
 module.exports = app;
