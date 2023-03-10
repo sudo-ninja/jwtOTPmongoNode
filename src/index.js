@@ -1,5 +1,7 @@
 const app = require ("./app");
-const PORT = process.env.PORT || 8080;
+require("dotenv");
+
+const {PORT} = process.env || 8080;
 
 
 // set port, listen for requests
@@ -8,9 +10,5 @@ const startApp = () =>{
         console.log(`Server is running on port ${PORT}.`);
     });
 }
-
-
-
-
 
 startApp();
