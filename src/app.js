@@ -53,4 +53,13 @@ for email verification with OTP
 
 */
 
+/*POST localhost:5000/api/v1/email_verification/verify
+https://www.youtube.com/watch?v=TFWuG4qTqIE
+after entering OTP to check if email is confirmed
+{
+    "email":"manoj020218@gmail.com",
+    "otp":"716761"
+}
+*/
+
 module.exports = app;
