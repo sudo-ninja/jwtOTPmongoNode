@@ -11,7 +11,7 @@ const routes = require("./routes");
 
 // create server app
 const app = express();
-// initialise server app
+// initialize server app
 
 app.use(cors());
 app.use(bodyParser());
@@ -37,4 +37,20 @@ app.use("/api/v1",routes);
 // }
 // 
 //expose this module to main index.js in src file
+
+//** to verify OTP in post man  */
+// POST : localhost:5000/api/v1/otp/verify 
+/* {
+    "email": "jenixjain@gmail.com",
+    "otp":"780957"
+}*/
+
+/*POST localhost:5000/api/v1/email_verification/ 
+for email verification with OTP 
+{
+    "email":"manoj020218@gmail.com"
+}
+
+*/
+
 module.exports = app;

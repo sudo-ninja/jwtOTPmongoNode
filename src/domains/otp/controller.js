@@ -1,8 +1,43 @@
 const OTP = require("./model");
 const generateOTP = require("./../../util/generateOTP");
 const sendEmail = require("./../../util/sendEmail");
-const {hashData} = require("./../../util/hashData");
+const {hashData,verifyHashedData} = require("./../../util/hashData");
 const {AUTH_EMAIL} = process.env;
+var expiresAt ;
+
+// verify OTP 
+const verifyOTP = async ({email,otp})=>{
+    try {
+        if(!(email && otp)){
+            throw Error ("Provide values for email, otp ");
+        }
+        // ensure OTP record exist 
+        const matchedOTPRecord = await OTP.findOne({
+            email,
+        });
+
+        if(!matchedOTPRecord){
+            throw Error("No OTP record found.");
+        }
+
+        const {expiresAt} = matchedOTPRecord; // such type { } define means calling one function data in other function
+        console.log(expiresAt);
+        // checking for expired code 
+        if(expiresAt < Date.now ()){
+            await OTP.deleteOne({email});
+            throw Error("code has expired, Request for new One");
+        }
+
+        // not expired yet verify value
+        const hashedOTP = matchedOTPRecord.otp;
+        const validOTP = await verifyHashedData(otp,hashedOTP);
+        return validOTP;     
+
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 const sendOTP = async ({email,subject,message,duration=1})=>{
     try {
@@ -33,9 +68,9 @@ const sendOTP = async ({email,subject,message,duration=1})=>{
             email,
             otp:hashedOTP,
             createdAt: Date.now(),
-            expiresAt: Date.now()+3600000 * +duration,
-        });
-
+            expiresAt: Date.now()+3600000*duration,
+            });
+           
        const createdOTPRecord = await newOTP.save();
        return createdOTPRecord;
 
@@ -44,4 +79,13 @@ const sendOTP = async ({email,subject,message,duration=1})=>{
     }
 };
 
-module.exports = {sendOTP}
+const deleteOTP = async (email)=>{
+    try {
+        await OTP.deleteOne({email});
+    } catch (error) {
+        throw error;
+        
+    }
+};
+
+module.exports = {sendOTP,verifyOTP,deleteOTP}
