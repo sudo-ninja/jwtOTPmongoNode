@@ -2,6 +2,8 @@ const express = require ("express");
 const router = express.Router();
 const {createNewUser,authenticateUser} = require("./controller")
 const auth = require("./../../middleware/auth");
+const {sendVerificationOTPEmail} = require("./../email_verification/controller");
+//
 
 
 //protected route
@@ -16,7 +18,7 @@ router.post("/",async(req,res)=>{
         email=email.trim();
         password=password.trim();  
 
-        //check condition
+        //check condition if email or password is empty
         if(!(email&&password)){
             throw Error("Empty credentials!");
         }
@@ -54,6 +56,8 @@ router.post("/signup",async(req,res)=>{
                 email,
                 password,
             });
+            // email verification with OTP 
+            await sendVerificationOTPEmail(email);
             res.status(200).json(newUser);
         }
     } catch (error) {

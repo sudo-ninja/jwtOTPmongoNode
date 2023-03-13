@@ -6,6 +6,10 @@ const UserSchema = new Schema({
     email:{type:String, unique:true},
     password:String,
     token: String,
+    verified:{
+        type: Boolean,
+        default:false
+    },
 
 });
 
