@@ -62,4 +62,25 @@ after entering OTP to check if email is confirmed
 }
 */
 
+/* POST localhost:5000/api/v1/forgot_password 
+pass email ID , it will check if verified email address is there or not then generate OTP for password reset
+{
+    "email":"manoj020218@gmail.com"
+}
+
+*/
+
+/*POST localhost:5000/api/v1/forgot_password/reset
+pass email ID and new Password with OTP
+https://www.youtube.com/watch?v=aiIDtjyY2_4 
+taken from here
+
+{
+    "email":"manoj020218@gmail.com",
+    "otp":"608949",
+    "newPassword":"test@12345"
+}
+
+*/
+
 module.exports = app;
