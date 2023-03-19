@@ -15,6 +15,7 @@ router.get("/private_data", auth, (req,res)=>{
 router.post("/",async(req,res)=>{
     try {
         let {email,password} = req.body;
+        //.trim()used to remove whitespace from both end of data input
         email=email.trim();
         password=password.trim();  
 

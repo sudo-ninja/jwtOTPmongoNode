@@ -16,6 +16,7 @@ router.post("/verify",async(req,res)=>{
 });
 
 //request new verification OTP
+
 router.post("/",async (req,res)=>{
     try {
         const {email,subject,message,duration}=req.body;

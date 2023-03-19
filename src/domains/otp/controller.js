@@ -38,7 +38,7 @@ const verifyOTP = async ({email,otp})=>{
     }
 };
 
-
+// this will create new OTP and using 4 input will send that random OTP
 const sendOTP = async ({email,subject,message,duration=1})=>{
     try {
         if(!(email&&subject&&message)){
@@ -47,10 +47,8 @@ const sendOTP = async ({email,subject,message,duration=1})=>{
         }
 // clear old record
         await OTP.deleteOne({email});
-
         // generate otp pin 
         const generatedOTP = await generateOTP();
-
         // send email 
         const mailOptions = {
             from: AUTH_EMAIL,

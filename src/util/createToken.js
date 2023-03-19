@@ -1,6 +1,7 @@
 const jwt = require ("jsonwebtoken");
 const { TOKEN_KEY,TOKEN_EXPIRY } = process.env; 
 
+// this will create token 
 const createToken = async (
     tokenData,
     tokenKey = TOKEN_KEY,

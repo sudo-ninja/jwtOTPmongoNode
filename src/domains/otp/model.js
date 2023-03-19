@@ -10,7 +10,7 @@ const OTPSchema = new Schema({
      createdAt: Date,
      expiresAt: Date,
 });
-
+// whatever name you give here same with s will be used in mongoDB
 const OTP = mongoose.model("OTP",OTPSchema);
 
 module.exports = OTP;

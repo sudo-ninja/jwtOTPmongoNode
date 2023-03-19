@@ -6,5 +6,7 @@ try {
     throw error;
 }
 };
+// this will generate random number of 6 digit , just by calling generate OTP . no need to pass any 
+//parameter
 
 module.exports = generateOTP;
