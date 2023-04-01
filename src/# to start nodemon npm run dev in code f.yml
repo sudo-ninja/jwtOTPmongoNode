@@ -1,0 +1,10 @@
+# to start nodemon npm run dev in code folder
+# cd server
+# npm run dev
+# folder structure
+# foldername
+#     -node_modules
+#     -src
+#     -*.env
+#     -{}package.json
+#     -{}package-lock-json

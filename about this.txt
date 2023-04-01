@@ -1,1 +1,5 @@
 OTP Creation and verification done at back end
+# to start nodemon npm run dev in code folder
+# cd server
+# npm run dev
+
